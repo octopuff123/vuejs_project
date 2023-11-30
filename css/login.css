@@ -1,0 +1,148 @@
+/* Use a custom font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* Define colors */
+:root {
+  --primary-color: #2E86C1;
+  --danger-color: #dc3545;
+  --gray-color: #f2f2f2;
+}
+
+/* Set base styles */
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+/* Style the container */
+.login-container { 
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--gray-color);
+  
+}
+
+/* Style the form */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:300px;
+  padding: 1.5rem;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  height:auto;
+}
+
+/* Style the form header */
+.login-header {
+    display: flex;
+    flex-direction: column;
+  font-size: 20px;
+  padding: 15px;
+  padding-bottom: 30px;
+  color: #333;
+  text-align: center;
+  /* text-transform: uppercase; */
+  /* letter-spacing: 0.1em; */
+  font-weight: bold;
+}
+
+.line {
+    flex-grow: 1;
+  height: 2px;
+  background-color: #6a62f5; 
+  margin: 4px 5px; 
+}
+
+/* Style the form input */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.form-label {
+    margin-right: auto;
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+  color: darkgrey;
+  font-weight: bold;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  transition: all 0.2s ease;
+}
+
+.form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.password-input {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  padding: 0.2rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  color: #333;
+}
+
+.password-toggle:hover {
+  text-decoration: underline;
+}
+
+/* Style the submit button */
+.btn {
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  border:none;
+  color: white;
+  /* background-color:rgb(164, 164, 241); */
+  background-color: #6a62f5;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 80%;
+  font-weight: bold;
+  letter-spacing: 0.4em;
+}
+
+.btn:hover {
+  background-color:#efeffe;
+  color: #6a62f5;
+}
+
+/* Style the error message */
+.is-invalid {
+  border-color: var(--danger-color) !important;
+}
+
+.invalid-feedback {
+  font-size: 0.8rem;
+  color: var(--danger-color);
+}
