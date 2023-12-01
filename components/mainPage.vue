@@ -4,55 +4,12 @@
         <div class="sidebar">
             <el-menu class="ulwidth">
                 <h4>德基机械</h4>
-                <el-menu-item @click="getCompanyList">公司名单
-                    <!--<span @click="getCompanyList">公司名单</span>
-                            <template #title>
-                            <i class="el-icon-location"></i>
-                            </template>-->
-                    <!--<el-menu-item-group>
-                            <template #title>分组一</template>
-                            <el-menu-item index="1-1">选项1</el-menu-item>
-                            <el-menu-item index="1-2">选项2</el-menu-item>
-                            </el-menu-item-group>
-                            <el-menu-item-group title="分组2">
-                            <el-menu-item index="1-3">选项3</el-menu-item>
-                            </el-menu-item-group>
-                            <el-sub-menu index="1-4">
-                            <template #title>选项4</template>
-                            <el-menu-item index="1-4-1">选项1</el-menu-item>
-                            </el-sub-menu>-->
-                </el-menu-item>
+                <el-menu-item @click="getCompanyList">公司名单</el-menu-item>
                 <el-menu-item @click="getEquitment">设备</el-menu-item>
                 <el-menu-item @click="toggleSearchUser">管理员名单</el-menu-item>
                 <el-menu-item @click="toggleCreateCompany"> 创建公司账户</el-menu-item>
                 <el-menu-item @click="toggleCreateEquip">创建新设备</el-menu-item>
                 <el-menu-item @click="toggleModifyAdmin">更新管理员账号</el-menu-item>
-                <!--<el-menu-item index="2">
-                            <i class="el-icon-menu"></i>
-                            <template #title>导航二</template>
-                        </el-menu-item>
-                        <el-menu-item index="3" disabled>
-                            <i class="el-icon-document"></i>
-                            <template #title>导航三</template>
-                        </el-menu-item>
-                        <el-menu-item index="4">
-                            <i class="el-icon-setting"></i>
-                            <template #title>导航四</template>
-                        </el-menu-item>
-                        <el-sub-menu index="5">
-                            <template #title>
-                            <i class="el-icon-location"></i>
-                            <span>导航一</span>
-                            </template>
-                            <el-menu-item-group>
-                            <template #title>分组一</template>
-                            <el-menu-item index="5-1">选项1</el-menu-item>
-                            <el-menu-item index="5-2">选项2</el-menu-item>
-                            </el-menu-item-group>
-                            <el-menu-item-group title="分组2">
-                            <el-menu-item index="5-3">选项3</el-menu-item>
-                            </el-menu-item-group>
-                        </el-sub-menu>-->
             </el-menu>
 
         </div> <!--sidebar-->
@@ -539,16 +496,22 @@ export default {
                 if (response.status === 200) {
                     // Assuming the response body contains a JSON object with a 'token' field
                     console.log('Company created');
-
-                    // display smtg that indicates success
-
-
+                     // display smtg that indicates success
+                    this.$alert('公司账号已注册！','成功',{
+                        confirmButtonText:'继续',
+                        type: 'warning', //icon
+                    })
 
                 } else {
                     console.error('Failed to create company');
                 }
             } catch (error) {
                 console.error('An error occurred:', error);
+                this.$alert('公司账号未能注册！','失败',{
+                    confirmButtonText:'继续',
+                    type: 'warning', //icon
+                    showClose: false,
+                })
             }
 
         },
@@ -593,11 +556,21 @@ export default {
                 if (response.status === 200) {
                     // Assuming the response body contains a JSON object with a 'token' field
                     console.log('Equipment created');
+                    //indicate success
+                    this.$alert('设备已注册！','成功',{
+                        confirmButtonText:'继续',
+                        type: 'warning', //icon
+                    })
                 } else {
                     console.error('Failed to create equipment');
                 }
             } catch (error) {
                 console.error('An error occurred:', error);
+                this.$alert('设备未能注册！','失败',{
+                    confirmButtonText:'继续',
+                    type: 'warning', //icon
+                    showClose: false,
+                })
             }
         },
         toggleModifyAdmin() {
@@ -640,11 +613,22 @@ export default {
                 if (response.status === 200) {
                     // Assuming the response body contains a JSON object with a 'token' field
                     console.log('Admin modified successfully');
+                    //indicate success
+                    this.$alert('用户信息已更改！','成功',{
+                        confirmButtonText:'继续',
+                        type: 'warning', //icon
+                    })
                 } else {
                     console.error('Failed to modify admin');
+                   
                 }
             } catch (error) {
                 console.error('An error occurred:', error);
+                this.$alert('用户信息未能更改！','失败',{
+                    confirmButtonText:'继续',
+                    type: 'warning', //icon
+                    showClose: false,
+                })
             }
         },
 
