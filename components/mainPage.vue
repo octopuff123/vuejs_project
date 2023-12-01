@@ -2,15 +2,67 @@
     <div class="parent">
         <!-- sidebar (first child)-->
         <div class="sidebar">
-            <el-menu class="ulwidth">
+            <el-container>
+                <el-aside :width="isCollapse ? '64px':'200px'">    
+                    <div class="toggle-button" @click="toggleCollapse">
+                        <el-icon class="titleIcon"><Histogram /></el-icon>
+                        <span class ="sidebarTitle" v-if="!isCollapse">德基机械</span>
+                    </div>
+                    <el-menu class="ulwidth" unique-opened :collapse="isCollapse" :collapse-transition="false">
+                        <el-menu-item @click="getCompanyList">
+                            <el-icon><Memo /></el-icon>
+                            <span v-if="!isCollapse">公司名单</span>
+                        </el-menu-item>
+                        <el-menu-item @click="getEquitment">
+                            <el-icon><Filter /></el-icon>
+                            <span v-if="!isCollapse"> 设备</span>   
+                        </el-menu-item>
+                        <el-menu-item @click="toggleSearchUser">
+                            <el-icon><Tickets /></el-icon>
+                            <span v-if="!isCollapse">管理员名单</span>   
+                        </el-menu-item>
+                        <el-menu-item @click="toggleCreateCompany"> 
+                            <el-icon><OfficeBuilding /></el-icon>
+                            <span v-if="!isCollapse">创建公司账户</span>  
+                        </el-menu-item>
+                        <el-menu-item @click="toggleCreateEquip">
+                            <el-icon><Monitor /></el-icon>
+                            <span v-if="!isCollapse">创建新设备</span>
+                        </el-menu-item>
+                        <el-menu-item @click="toggleModifyAdmin">
+                            <el-icon><User /></el-icon>
+                            <span v-if="!isCollapse">更新管理员账号</span>
+                        </el-menu-item>
+                    </el-menu>
+                </el-aside>
+            </el-container>
+            <!-- <el-menu class="ulwidth">
                 <h4>德基机械</h4>
-                <el-menu-item @click="getCompanyList">公司名单</el-menu-item>
-                <el-menu-item @click="getEquitment">设备</el-menu-item>
-                <el-menu-item @click="toggleSearchUser">管理员名单</el-menu-item>
-                <el-menu-item @click="toggleCreateCompany"> 创建公司账户</el-menu-item>
-                <el-menu-item @click="toggleCreateEquip">创建新设备</el-menu-item>
-                <el-menu-item @click="toggleModifyAdmin">更新管理员账号</el-menu-item>
-            </el-menu>
+                <el-menu-item @click="getCompanyList">
+                    <el-icon><Memo /></el-icon>
+                    公司名单
+                </el-menu-item>
+                <el-menu-item @click="getEquitment">
+                    <el-icon><Filter /></el-icon>
+                    设备
+                </el-menu-item>
+                <el-menu-item @click="toggleSearchUser">
+                    <el-icon><Tickets /></el-icon>
+                    管理员名单
+                </el-menu-item>
+                <el-menu-item @click="toggleCreateCompany"> 
+                    <el-icon><OfficeBuilding /></el-icon>
+                    创建公司账户
+                </el-menu-item>
+                <el-menu-item @click="toggleCreateEquip">
+                    <el-icon><Monitor /></el-icon>
+                    创建新设备
+                </el-menu-item>
+                <el-menu-item @click="toggleModifyAdmin">
+                    <el-icon><User /></el-icon>
+                    更新管理员账号
+                </el-menu-item>
+            </el-menu> -->
 
         </div> <!--sidebar-->
 
@@ -214,7 +266,6 @@
 <script>
 import axios from 'axios';
 import { mapGetters } from 'vuex';
-import {ref} from 'vue';
 // import Popup from './components/Popup.vue';
 
 export default {
@@ -232,6 +283,7 @@ export default {
     // },
     data() {
         return {
+            isCollapse:false,
             companylist: [], // Initialize the compList data property
             equiplist: [],
             adminlist: [],
@@ -338,6 +390,9 @@ export default {
         ...mapGetters(['CompanyID', 'Username', 'Password', 'Token']),
     },
     methods: {
+        toggleCollapse(){
+            this.isCollapse = !this.isCollapse
+        },
         handleOpen(key, keyPath) {
             console.log(key, keyPath)
         },
