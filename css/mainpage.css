@@ -32,13 +32,22 @@
 .toggle-button {
     color: #6a62f5;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 20px;
     text-align: center;
     padding-top: 17px;
     padding-bottom: 10px;
     letter-spacing: 1px;
     cursor: pointer;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
+
+/* .logo {
+    margin-right: 5px;
+    margin-left: 9px;
+} */
 
 .ulwidth .el-menu-item{
     overflow: hidden;
@@ -55,6 +64,12 @@
 .sidebar .el-menu .el-menu-item:hover
 {
     color:#6a62f5;
+}
+
+.sidebar .el-menu .el-menu-item:focus
+{
+    color:#6a62f5;
+    background-color: #efeffe;
 }
 
 /* .sidebarcontent

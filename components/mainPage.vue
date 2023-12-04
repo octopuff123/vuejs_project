@@ -5,9 +5,11 @@
             <el-container>
                 <el-aside :width="isCollapse ? '64px':'200px'">    
                     <div class="toggle-button" @click="toggleCollapse">
-                        <el-icon class="titleIcon"><Histogram /></el-icon>
+                        <el-avatar :size="38" :src="dg_pic" shape="square" class="logo"></el-avatar>
+                        
                         <span class ="sidebarTitle" v-if="!isCollapse">德基机械</span>
                     </div>
+                    <!-- <el-icon class="titleIcon"><Histogram /></el-icon> -->
                     <el-menu class="ulwidth" unique-opened :collapse="isCollapse" :collapse-transition="false">
                         <el-menu-item @click="getCompanyList">
                             <el-icon><Memo /></el-icon>
@@ -283,6 +285,7 @@ export default {
     // },
     data() {
         return {
+            dg_pic: require('@/assets/DG.png'),
             isCollapse:false,
             companylist: [], // Initialize the compList data property
             equiplist: [],
